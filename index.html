@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graf Algoritmalarının Görsel Web Uygulaması</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">GA</div>
+            <div>
+                <h1>Graf Algoritmaları Görselleştirme Uygulaması</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <h2>Algoritmalar</h2>
+
+            <button class="menu-btn active" data-algo="dijkstra">Dijkstra Algoritması</button>
+            <button class="menu-btn" data-algo="bellmanFord">Bellman-Ford Algoritması</button>
+            <button class="menu-btn" data-algo="prim">Prim Algoritması</button>
+            <button class="menu-btn" data-algo="kruskal">Kruskal Algoritması</button>
+
+        </aside>
+
+        <main class="content">
+            <section class="card info-card">
+                <h2 id="algoTitle">Dijkstra Algoritması</h2>
+                <p id="algoDescription"></p>
+
+                <h3>Adım Adım Çalışma Mantığı</h3>
+                <ul id="algoSteps"></ul>
+            </section>
+
+            <section class="card control-card">
+                <div class="controls-row">
+                    <div class="control-group">
+                        <label for="sourceNode">Başlangıç Düğümü</label>
+                        <select id="sourceNode"></select>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="startBtn" class="primary-btn">Başlat</button>
+                        <button id="nextBtn" class="secondary-btn">Adım Adım</button>
+                        <button id="stopBtn" class="ghost-btn">Durdur</button>
+                        <button id="clearBtn" class="ghost-btn">Çizimi Temizle</button>
+                        <button id="resetBtn" class="info-btn">Sıfırla</button>
+                        <button id="newGraphBtn" class="success-btn">Yeni Grafik Oluştur</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="graph-layout">
+                <div class="card graph-card">
+                    <div class="section-header">
+                        <h3>Graf Çizim Alanı</h3>
+                        <span id="statusText" class="status-badge">Hazır</span>
+                    </div>
+
+                    <canvas id="graphCanvas" width="900" height="500"></canvas>
+
+                    <div class="legend-box">
+                        <div class="legend-item"><span class="legend-color blue"></span> Seçilen kenar</div>
+                        <div class="legend-item"><span class="legend-color orange"></span> İncelenen kenar</div>
+                        <div class="legend-item"><span class="legend-color red"></span> Negatif ağırlık</div>
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <div class="card summary-card">
+                        <h3>Sonuç / Özet</h3>
+                        <div id="summaryContent" class="summary-content">
+                            Bir algoritma seçin ve “Başlat” butonuna basın.
+                        </div>
+                    </div>
+
+                    <div class="card step-card">
+                        <h3>Geçerli Adım</h3>
+                        <div id="currentStepText" class="current-step-text">
+                            Henüz işlem başlatılmadı.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="edgeModal" class="edge-modal hidden">
+        <div class="edge-modal-box">
+            <h3>Kenar Ağırlığı Ekle</h3>
+            <p id="edgeModalText">Seçilen düğümler arasındaki ağırlığı girin.</p>
+            <input type="number" id="edgeWeightInput" placeholder="Ağırlık giriniz" />
+            <div class="edge-modal-buttons">
+                <button id="saveEdgeBtn">Kaydet</button>
+                <button id="cancelEdgeBtn">İptal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dijkstra.js"></script>
+    <script src="bellmanFord.js"></script>
+    <script src="prim.js"></script>
+    <script src="kruskal.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
